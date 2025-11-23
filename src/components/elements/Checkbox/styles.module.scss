@@ -1,0 +1,41 @@
+@use 'src/styles/media' as query;
+
+.checkbox {
+	gap: 10px;
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	width: 25px;
+	height: 25px;
+	border: 1px solid var(--input-border);
+	border-radius: 0.5rem;
+	overflow: hidden;
+	margin-left: auto;
+	padding: 0;
+
+	@include query.media('screen', '<breakpoint-lg-tablet') {
+		grid-template-columns: 1fr;
+	}
+}
+
+.indicator {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+	height: 100%;
+	position: relative;
+
+	svg {
+		position: absolute;
+		top: 2px;
+		left: 1px;
+	}
+}
+
+.indicator::after {
+	content: '';
+	display: block;
+	background-color: #4FB335;
+	width: 25px;
+	height: 25px;
+}

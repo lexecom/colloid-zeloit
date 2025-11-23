@@ -1,0 +1,31 @@
+@use 'src/styles/variables' as vars;
+
+.gift {
+	padding: 3rem vars.$container-padding 0;
+	background-color: var(--primary);
+	color: #fff;
+
+	h1 {
+		font-size: 1.75rem;
+	}
+
+	.wrapper {
+		max-width: 1024px;
+		display: grid;
+		gap: 1rem;
+		margin: 0 auto;
+
+		> h1,
+		> p {
+			text-align: center;
+		}
+
+		> h1 {
+			margin-bottom: 1rem;
+		}
+
+		img {
+			margin: 0 auto;
+		}
+	}
+}

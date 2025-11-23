@@ -1,0 +1,518 @@
+@use 'src/styles/media' as query;
+
+.label {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	width: 100%;
+}
+
+.label > span {
+	margin-left: auto;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-end;
+	
+}
+
+.price {
+	font-size: 15px;
+	font-weight: bold;
+	color: var(--primary);
+	text-shadow: 
+		0 0 5px rgba(0, 98, 154, 0.3),
+		0 0 10px rgba(0, 98, 154, 0.2),
+		0 0 15px rgba(0, 98, 154, 0.1);
+	animation: priceGlow 2s ease-in-out infinite alternate;
+}
+
+@keyframes priceGlow {
+	0% {
+		text-shadow: 
+			0 0 5px rgba(0, 98, 154, 0.3),
+			0 0 10px rgba(0, 98, 154, 0.2),
+			0 0 15px rgba(0, 98, 154, 0.1);
+	}
+	100% {
+		text-shadow: 
+			0 0 8px rgba(0, 98, 154, 0.5),
+			0 0 15px rgba(0, 98, 154, 0.3),
+			0 0 20px rgba(0, 98, 154, 0.2);
+	}
+}
+
+
+
+.salePrice {
+	font-size: 12.5px;
+	color: #aaa;
+	position: relative;
+	text-decoration: none;
+	
+	&::after {
+		content: '';
+		position: absolute;
+		left: -2px;
+		right: -2px;
+		top: 50%;
+		height: 2px;
+		background: linear-gradient(135deg, #e30613 0%, #ff4757 100%);
+		transform: translateY(-50%) rotate(-8deg);
+		transform-origin: center;
+		animation: strikeThrough 0.6s ease-out forwards;
+		box-shadow: 0 0 4px rgba(227, 6, 19, 0.4);
+	}
+}
+
+@keyframes strikeThrough {
+	0% {
+		width: 0;
+		left: 50%;
+		right: 50%;
+		opacity: 0;
+	}
+	50% {
+		opacity: 1;
+	}
+	100% {
+		width: calc(100% + 4px);
+		left: -2px;
+		right: -2px;
+		opacity: 1;
+	}
+}
+
+.RadioGroupRoot {
+	display: grid;
+	grid-template-columns: 1fr;
+	gap: 0.4rem;
+	margin-top: 0.5rem;
+	width: 100%;
+
+	.item:nth-child(1) {
+		grid-column: 1;
+	}
+	
+	.bestOption {
+		grid-column: 1;
+		width: 55%;
+	}
+	
+	.item:nth-child(3) {
+		grid-column: 1;
+	}
+	
+	.special {
+		grid-column: 1;
+		width: 100%;
+	}
+
+	@include query.media('screen', '<breakpoint-lg-tablet') {
+		display: flex;
+		flex-direction: column;
+		gap: 0.4rem;
+	}
+}
+
+.discountLabel {
+	background-color: #2C5F96;
+	color: white;
+	border-radius: 4px;
+	font-size: 13.5px;
+	display: inline-block;
+	margin-top: 6%;
+	padding: 2.5%;
+	text-align: center;
+	box-sizing: border-box;
+}
+
+
+
+.discountLabel2 {
+	
+
+	display: inline-block;
+	margin-top: 5%;
+	margin-bottom: 2%;
+	font-size: 13px;
+	text-align: center;
+	
+}
+.discountLabel3 {
+	margin-top: 5%;
+	font-size: 11px;
+	position: relative;
+	text-decoration: underline;
+	text-decoration-color: var(--primary);
+	color: var(--primary);
+	font-weight: 600;
+	
+}
+.naslov {
+	
+	display: inline-block;
+	text-align: left;
+	box-sizing: border-box;
+	font-size: 15.5px;
+	font-weight: 700;
+}
+
+.naslov2 {
+	display: inline-block;
+	margin-top: 0.5rem;
+	text-align: center;
+	font-size: 12.5px;
+	font-weight: 700;
+}
+
+.item {
+	display: flex;
+	align-items: center;
+	font-size: 14px;
+	position: relative;
+	max-height: 80px;
+	margin-top: 0.5rem;
+	padding: 1rem;
+	
+
+	b,
+	span {
+		font-weight: 700;
+	}
+
+	@include query.media('screen', '<breakpoint-lg-tablet') {
+		padding: 2.8rem 1.2rem;
+		max-height: 65px;
+	}
+
+	&:nth-child(1) {
+		flex: 1;
+		margin-bottom: calc(2px + 0.4rem);
+
+		@include query.media('screen', '<breakpoint-lg-tablet') {
+			flex: auto;
+			width: 100%;
+		}
+	}
+
+	&:nth-child(2) {
+		width: 100%;
+
+		@include query.media('screen', '<breakpoint-lg-tablet') {
+			width: 100%;
+		}
+	}
+
+	
+	.label {
+		display: flex;
+		
+		img {
+			margin-left: -0.5rem;
+			margin-right: 0.5rem;
+		}
+		.pokloniImage {
+			margin-top: 0.6rem;
+			margin-left: 0.5rem;
+			margin-right: 0.5rem;
+			align-items: center;
+		}
+	}
+
+	transition: background 0.2s, border-color 0.2s;
+}
+
+
+// Highlight the card background and border if its radio is checked
+.item:has(.RadioGroupItem[data-state='checked']) {
+	background: #eaf3fa;
+	border-color: #2C5F96;
+}
+
+// Change discount label color if checked
+.item:has(.RadioGroupItem[data-state='checked']) .discountLabel {
+	background: #2C5F96;
+	color: #ffffff;
+}
+
+.special {
+	display: grid;
+	gap: 0.25rem;
+	margin-top: 0.5rem;
+	width: 100%;
+	
+
+	>h2 {
+		font-size: 1rem;
+		font-weight: 600;
+		margin-bottom: 0.5rem;
+	}
+
+	.item {
+		width: 100%;
+		max-height: 300px;
+		display:grid;
+
+		@include query.media('screen', '<breakpoint-lg-tablet') {
+			max-height: 275px;
+			padding-top: 1rem;
+			padding-bottom: 1rem;
+		}
+	
+	
+	.pokloni {
+		width: 100%;
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 0.5rem;
+		margin-top: 1rem;
+		text-align: center;
+		border: 2px dotted #2C5F96;
+		padding: 1rem;
+		border-radius: 8px;
+		position: relative;
+
+		&::before {
+			content: '+';
+			position: absolute;
+			left: 50%;
+			top: 38%;
+			transform: translate(-50%, -50%);
+			font-size: 20px;
+			font-weight: bold;
+			color: #2B2B2B;
+			z-index: 1;
+		}
+
+		&::after {
+			content: 'BESPLATNO';
+			position: absolute;
+			left: 50%;
+			top: 12%;
+			transform: translate(-50%, -50%);
+			font-size: 12px;
+			font-weight: bold;
+			color: #2B2B2B;
+			z-index: 1;
+		}
+
+		> div {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+
+			&:first-child {
+				padding-right: 0.4rem;
+			}
+
+			&:last-child {
+				padding-left: 0.4rem;
+			}
+		}
+	}
+
+	.pokloniImage {
+		// margin: 0.5rem auto;
+		display: block;
+		border-radius: 15%;
+	}
+}
+	
+}
+
+.RadioGroupItem {
+	
+	width: 100%;
+	border-radius: 0.75rem;
+	position: absolute;
+	top: 0;
+	left: 0;
+	border: 2px dashed var(--input-border);
+	height: 100%;
+	background-color: #f6f6f6;
+	cursor: pointer;
+	
+}
+
+.RadioGroupItem1 {
+	
+	width: 100%;
+	border-radius: 0.75rem;
+	position: absolute;
+	top: 0;
+	left: 0;
+	border: 2px dashed #2c6097bb;
+	height: 100%;
+	background-color: #f6f6f6;
+	cursor: pointer;
+	
+}
+
+
+.RadioGroupItem[data-state='checked'] {
+	outline: 3px solid #2C5F96;
+	box-shadow: 0 0 0 2px #2C5F96;
+	background-color: rgba(56, 152, 255, 0.128);
+	z-index: 0;
+	border: none;
+	height: 100%;
+
+	
+// ako je checked, onda je label crni
+	&+input+label {
+		color: rgb(0, 0, 0);
+	}
+}
+
+.RadioGroupItem1[data-state='checked'] {
+	outline: 3px solid #2C5F96;
+	box-shadow: 0 0 0 2px #2C5F96;
+	background-color: rgba(56, 152, 255, 0.128);
+	z-index: 0;
+	border: none;
+	height: 100%;
+
+	
+// ako je checked, onda je label crni
+	&+input+label {
+		color: rgb(0, 0, 0);
+	}
+}
+
+.RadioGroupItem:hover {
+	box-shadow: 0 0 0 3px var(--input-border);
+	height: 100%;
+	border: none;
+}
+
+.RadioGroupItem:focus {
+	box-shadow: 0 0 0 3px var(--focus);
+	height: 100%;
+	border: none;
+}
+
+.RadioGroupIndicator {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+	height: 100%;
+	position: relative;
+	overflow: hidden;
+}
+
+.RadioGroupIndicator::after {
+	content: '';
+	display: block;
+	width: 11px;
+	height: 11px;
+	border-radius: 50%;
+}
+
+.label {
+	z-index: 1;
+}
+
+.bestOption {
+	width: 100%;
+	margin: 0.5rem 0;
+
+	> h2 {
+		font-size: 14px;
+		font-weight: 700;
+		color: var(--primary);
+		background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+		padding: 0.5rem 1rem;
+		border-radius: 20px;
+		border: 2px solid var(--primary);
+		text-align: center;
+		box-shadow: 0 2px 8px rgba(0, 98, 154, 0.15);
+		animation: bestOptionGlow 2s ease-in-out infinite alternate;
+		letter-spacing: 0.5px;
+		width: 100%;
+		margin: 0;
+		display: block;
+		box-sizing: border-box;
+	}
+}
+
+@keyframes bestOptionGlow {
+	0% {
+		box-shadow: 0 2px 8px rgba(0, 98, 154, 0.15);
+		transform: scale(1);
+	}
+	100% {
+		box-shadow: 0 4px 12px rgba(0, 98, 154, 0.3);
+		transform: scale(1.02);
+	}
+}
+
+.special {
+	display: grid;
+	gap: 0.1rem;
+	margin-top: 0.5rem;
+	width: 100%;
+	
+
+	>h2 {
+		font-size: 15px;
+		font-weight: 600;
+		width: 100%;
+		text-align: center;
+		background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+		padding: 0.5rem 1rem;
+		border-radius: 20px;
+		border: 2px solid var(--primary);
+		color: var(--primary);
+		box-shadow: 0 2px 8px rgba(0, 98, 154, 0.15);
+		animation: specialTitleGlow 2s ease-in-out infinite alternate;
+		letter-spacing: 0.5px;
+		margin: 0 0 0.5rem 0;
+		display: block;
+		box-sizing: border-box;
+	}
+}
+
+@keyframes specialTitleGlow {
+	0% {
+		box-shadow: 0 2px 8px rgba(0, 98, 154, 0.15);
+		transform: scale(1);
+	}
+	100% {
+		box-shadow: 0 4px 12px rgba(0, 98, 154, 0.3);
+		transform: scale(1.01);
+	}
+}
+
+.discountTag {
+	position: absolute;
+	top: -13px;
+	right: -7px;
+	background: #e30613;
+	color: #fff;
+	font-size: 13px;
+	font-weight: 700;
+	border-radius: 5px;
+	padding: 4px 6px;
+	z-index: 2;
+	box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+	letter-spacing: 0.5px;
+	animation: discountTagPulse 2s ease-in-out infinite;
+}
+
+@keyframes discountTagPulse {
+	0%, 100% {
+		transform: scale(1);
+		box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+	}
+	50% {
+		transform: scale(1.05);
+		box-shadow: 
+			0 4px 12px rgba(227, 6, 19, 0.3),
+			0 0 20px rgba(227, 6, 19, 0.2);
+	}
+}
+
+
+

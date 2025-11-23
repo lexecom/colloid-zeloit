@@ -1,0 +1,45 @@
+@use 'src/styles/media' as query;
+
+.notify {
+	height: 4rem;
+	background-color: var(--primary);
+	font-size: 1rem;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 1rem;
+	color: var(--text-light);
+	font-weight: 700;
+	letter-spacing: 0.3px;
+
+	@include query.media('screen', '<breakpoint-lg-tablet') {
+		padding: 1rem 0rem;
+		font-size: 0.9rem;
+		color: #ffffff;
+		font-weight: 600;
+		display: flex;
+		flex-direction: column;
+		height: auto;
+		text-align: center;
+		gap: 0.5rem;
+	}
+
+	p>span {
+		margin: 0 1rem;
+	}
+
+
+	button {
+		color: var(--secondary);
+		background-color: var(--background);
+		font-weight: 700;
+		border-radius: 0.5rem;
+		padding: 0.75rem 2.5rem;
+
+		@include query.media('screen', '<breakpoint-lg-tablet') {
+			width: 100%;
+			padding: 0.5rem 2.5rem;
+		}
+	}
+
+}

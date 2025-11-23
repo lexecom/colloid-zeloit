@@ -1,0 +1,33 @@
+@use 'src/styles/media' as query;
+@use 'src/styles/variables' as vars;
+
+.comments {
+	padding: 3rem vars.$container-padding;
+
+	.wrapper {
+		max-width: 1024px;
+		display: grid;
+		gap: 1rem;
+		margin: 0 auto;
+
+		> h1 {
+			text-align: center;
+		}
+
+		.grid {
+			display: grid;
+			grid-template-columns: repeat(3, 1fr);
+
+			@include query.media('screen', '<breakpoint-lg-tablet') {
+				grid-template-columns: 1fr;
+				gap: 1.5rem;
+			}
+
+			img {
+				@include query.media('screen', '<breakpoint-lg-tablet') {
+					margin: 0 auto;
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,26 @@
+@use 'src/styles/media' as query;
+
+.main,
+.main__app {
+	font-family: var(--poppins);
+}
+
+.main {
+	background-color: var(--background);
+
+	&__app {
+		background-color: var(--background);
+
+		.layout {
+			padding: 0 env(safe-area-inset-right, 20px) 0 env(safe-area-inset-left, 20px);
+
+			@include query.media('screen', '>breakpoint-lg-tablet') {
+				display: flex;
+			}
+
+			.app {
+				width: 100%;
+			}
+		}
+	}
+}

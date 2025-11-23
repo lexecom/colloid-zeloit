@@ -1,0 +1,43 @@
+@use 'src/styles/media' as query;
+@use 'src/styles/variables' as vars;
+
+.icons {
+	padding: 2rem vars.$container-padding;
+	background-color: #E59DA7;
+
+	.wrapper {
+		max-width: 1024px;
+		display: grid;
+		gap: 1rem;
+		margin: 0 auto;
+
+		>h1 {
+			text-align: center;
+		}
+
+		.grid {
+			display: grid;
+			grid-template-columns: repeat(4, 1fr);
+
+			@include query.media('screen', '<breakpoint-lg-tablet') {
+				grid-template-columns: 1fr 1fr;
+				gap: 1.5rem;
+			}
+
+			.icon {
+				margin: 0 auto;
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+				align-items: center;
+				gap: 0.5rem;
+			}
+
+			p {
+				color: #2B2B2B;
+				font-weight: 700;
+				text-align: center;
+			}
+		}
+	}
+}

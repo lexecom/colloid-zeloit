@@ -1,0 +1,47 @@
+@use 'src/styles/variables' as vars;
+
+.doctor {
+	padding: 3rem vars.$container-padding;
+	background-image: url('/images/paper.jpg');
+
+	h1 {
+		font-size: 1.75rem;
+	}
+
+	.wrapper {
+		max-width: 1024px;
+		display: grid;
+		gap: 1rem;
+		margin: 0 auto;
+
+		> h1,
+		> p {
+			text-align: center;
+		}
+
+		> h1 {
+			margin-bottom: 1rem;
+		}
+
+		.human {
+			display: flex;
+			gap: 1rem;
+			align-items: center;
+			margin: 0 auto;
+
+			img {
+				border-radius: 60px;
+			}
+
+			div {
+				&:first-child {
+					font-weight: 700;
+				}
+			}
+		}
+
+		// img {
+		//     margin: 0 auto;
+		// }
+	}
+}

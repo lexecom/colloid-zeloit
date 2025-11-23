@@ -1,0 +1,37 @@
+@use 'src/styles/variables' as vars;
+
+@function translate-media-condition($c) {
+	$condMap: (
+		'screen': 'only screen',
+		'print': 'only print',
+		'retina':
+			'(-webkit-min-device-pixel-ratio: 1.5), (min--moz-device-pixel-ratio: 1.5), (-o-min-device-pixel-ratio: 3/2), (min-device-pixel-ratio: 1.5), (min-resolution: 120dpi)',
+		'>breakpoint-tablet': '(min-width: #{vars.$breakpoint-tablet + 1})',
+		'<breakpoint-tablet': '(max-width: #{vars.$breakpoint-tablet})',
+		'>breakpoint-lg-tablet': '(min-width: #{vars.$breakpoint-lg-tablet + 1})',
+		'<breakpoint-lg-tablet': '(max-width: #{vars.$breakpoint-lg-tablet})',
+		'>breakpoint-desktop': '(min-width: #{vars.$breakpoint-desktop + 1})',
+		'<breakpoint-desktop': '(max-width: #{vars.$breakpoint-desktop})',
+		'>breakpoint-lg-desktop': '(min-width: #{vars.$breakpoint-lg-desktop + 1})',
+		'<breakpoint-lg-desktop': '(max-width: #{vars.$breakpoint-lg-desktop})',
+	);
+	@return map-get($condMap, $c);
+}
+
+@mixin media($args...) {
+	$query: '';
+
+	@each $arg in $args {
+		$op: '';
+
+		@if ($query != '') {
+			$op: ' and ';
+		}
+
+		$query: $query + $op + translate-media-condition($arg);
+	}
+
+	@media #{$query} {
+		@content;
+	}
+}

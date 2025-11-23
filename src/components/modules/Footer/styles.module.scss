@@ -1,0 +1,126 @@
+@use 'src/styles/media' as query;
+
+.footer {
+    background: #e2effc;
+    color: #2d2926;
+    padding: 2rem 1.5rem;
+}
+
+.wrapper {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* === TOP SECTION (LOGO, CONTACT, SOCIALS) === */
+
+.topSection {
+    padding-bottom: 2rem;
+    margin-bottom: 2rem;
+    border-bottom: 1px solid #d0e1f0;
+}
+
+.logo {
+    margin-bottom: 2rem;
+}
+
+.contact {
+    margin-bottom: 2rem;
+    text-align: left;
+}
+
+.socials {
+    display: flex;
+    gap: 1rem;
+}
+
+.socialIcon {
+    background: #fff;
+    border-radius: 50%;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.07);
+    transition: box-shadow 0.2s;
+
+    img {
+        display: block;
+    }
+
+    &:hover {
+        box-shadow: 0 4px 16px 0 rgba(244, 124, 180, 0.18);
+    }
+}
+
+.linksLabel {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+}
+
+.linkItem {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    font-size: 1rem;
+    font-weight: 400;
+    margin-bottom: 1rem;
+
+    &[href]:hover {
+            color: #ec5a99;
+        }
+}
+
+/* === BOTTOM SECTION (COPYRIGHT) === */
+
+.bottomSection {
+    padding-top: 1rem;
+    text-align: center;
+}
+
+.copyright {
+    font-size: 0.8rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+.disclaimer {
+    font-size: 0.7rem;
+    color: #555;
+    line-height: 1.4;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* === DESKTOP OVERRIDES === */
+@media (min-width: 768px) {
+    .topSection {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: auto auto;
+        grid-template-areas:
+            'logo    contact'
+            'socials contact';
+        gap: 1rem 3rem;
+        align-items: start;
+    }
+
+    .logo {
+        grid-area: logo;
+        margin-bottom: 0;
+        justify-self: end;
+    }
+
+    .contact {
+        grid-area: contact;
+        margin-bottom: 0;
+        justify-self: start;
+    }
+
+    .socials {
+        grid-area: socials;
+        justify-self: end;
+    }
+}

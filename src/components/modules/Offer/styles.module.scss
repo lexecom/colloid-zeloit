@@ -1,0 +1,72 @@
+@use 'src/styles/variables' as vars;
+
+.offer {
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+	padding: 2rem vars.$container-padding;
+
+	p {
+		text-align: center;
+	}
+
+	.wrapper {
+		display: grid;
+		gap: 1rem;
+		margin: 0 auto;
+		max-width: 768px;
+	}
+
+	h1 {
+		font-size: 1.75rem;
+		font-weight: 700;
+		line-height: unset;
+		color: var(--secondary);
+		max-width: 380px;
+		text-align: center;
+	}
+
+	.list {
+		margin-top: 2rem;
+		display: grid;
+		gap: 0.5rem;
+
+		button {
+			background-color: hsl(4, 98%, 66%);
+			width: 100%;
+
+			div:first-child {
+				font-size: 1rem;
+				font-weight: 900;
+			}
+
+			div:last-child {
+				font-size: 0.75rem;
+				font-weight: 600;
+			}
+		}
+
+		& + p {
+			font-weight: 700;
+
+			& span {
+				color: var(--primary);
+			}
+		}
+	}
+
+	.card {
+		padding: 0.75rem 1.75rem;
+		background-color: var(--primary);
+		border-radius: 0.5rem;
+		font-weight: 400;
+		color: var(--text-light);
+		text-align: center;
+
+		& + p {
+			margin-top: 0;
+			margin-bottom: 0.25rem;
+			color: #fd5e53;
+		}
+	}
+}
